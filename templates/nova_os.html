@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Abrir Nova OS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='nova_os.css') }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <h1>Abrir Nova Ordem de Serviço</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/login">Login Técnico</a>
+    </nav>
+  </header>
+  <div class="container">
+    <form method="POST" enctype="multipart/form-data">
+      <label for="nome">Nome do Solicitante:</label>
+      <select id="nome" name="nome" required>
+       <option value="" disabled selected>Selecione um nome</option>
+       <option value="Ana Júlia">Ana Júlia</option>
+       <option value="Bárbara">Bárbara</option>
+       <option value="Betânia">Betânia</option>
+       <option value="Camila Fernandes">Camila Fernandes</option>
+       <option value="Camylla Cristina">Camylla Cristina</option>
+       <option value="Cléber Ramos">Cléber Ramos</option>
+       <option value="Dalma">Dalma</option>
+       <option value="Douglas">Douglas</option>
+       <option value="Emily">Emily</option>
+       <option value="Érica">Érica</option>
+       <option value="Erick Borges">Erick Borges</option>
+       <option value="Isabely">Isabely</option>
+       <option value="Ruan Teodoro">Juan Teodoro</option>
+       <option value="Leonardo">Leonardo</option>
+       <option value="Lizianne">Lizianne</option>
+       <option value="Mateus Lobato">Mateus Lobato</option>
+       <option value="Matheus Neves">Matheus Neves</option>
+       <option value="Miguel">Miguel</option>
+       <option value="Patrícia">Patrícia</option>
+       <option value="Paulo Faraone">Paulo Faraone</option>
+       <option value="Rafael">Rafael</option>
+       <option value="Rayane">Rayane</option>
+       <option value="Vinícius">Vinícius</option>
+       <option value="Vitor Paulo">Vitor Paulo</option>
+       <option value="Willian Valério">Willian Valério</option>
+      </select>
+
+      
+      <label for="setor">Setor:</label>
+<select id="setor" name="setor" required>
+  <option value="" disabled selected>Selecione o setor</option>
+  <option value="Assistência Técnica">Assistência Técnica</option>
+  <option value="Comercial">Comercial</option>
+   <option value="Compras">Compras</option>
+  <option value="Diretoria">Diretoria</option>
+  <option value="Estoque">Estoque</option>
+  <option value="Faturamento">Faturamento</option>
+  <option value="Financeiro">Financeiro</option>
+  <option value="Recepção">Recepção</option>
+  <option value="Suporte Técnico">Suporte Técnico</option>
+   <option value="Vendas">Vendas</option>
+</select>
+
+
+      <label for="tipo_servico">Tipo de Serviço:</label>
+      <input type="text" id="tipo_servico" name="tipo_servico" required />
+
+      <label for="descricao">Descrição do Problema:</label>
+      <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+      <label for="arquivo">Anexar Arquivo (opcional):</label><br>
+      <input type="file" id="arquivo" name="arquivo"><br><br>
+
+    <input type="submit" value="Abrir OS" />
+</form>
+    </form>
+  </div>
+  <footer>MBM Copy - Sistema de OS</footer>
+</body>
+</html>

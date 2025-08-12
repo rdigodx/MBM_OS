@@ -1,0 +1,180 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("/static/teste.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
+  color: #003366;
+}
+
+header {
+  background-color: #003366;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+}
+
+h1 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 70px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+form select {
+  width: 110%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 17px;
+  background-color: white;
+}
+
+form {
+  width: 100%;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1em;
+  resize: vertical;
+}
+
+form input[type="submit"] {
+  background-color: #cc0000;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: #990000;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 10px;
+  background-color:  #003366;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+}
+ 
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  header {
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  nav a {
+    margin: 6px 0;
+    font-size: 1rem;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #004080;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .container {
+    margin: 40px 10px;
+    padding: 40px 60px;
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 8px;
+  }
+
+  form label {
+    font-size: 1.5rem;
+  }
+
+  form input[type="text"],
+  form textarea {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  form input[type="submit"] {
+    font-size: 1rem;
+    padding: 12px 18px;
+  }
+
+
+
+  footer {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

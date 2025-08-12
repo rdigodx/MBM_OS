@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel Técnico - Sistema OS</title>
+  <link rel="stylesheet" href="/static/painel.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Painel Técnico</h1>
+
+    <!-- Botão Dark Mode -->
+    <button id="toggle-theme" class="toggle-theme">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <nav class="menu-nav">
+      <a href="{{ url_for('painel') }}" class="botao-nav todas">
+        <i class="fas fa-list"></i> Todas  <br>({{ qtd_total }}) 
+      </a>
+      <a href="{{ url_for('painel', filtro='novas') }}" class="botao-nav novas">
+        <i class="fas fa-plus-circle"></i> Novas <br>({{ qtd_nova }})
+      </a>
+      <a href="{{ url_for('painel', filtro='pendentes') }}" class="botao-nav pendentes">
+        <i class="fas fa-hourglass-half"></i> Pendentes <br>({{ qtd_pendente }})
+      </a>
+      <a href="{{ url_for('painel', filtro='concluidas') }}" class="botao-nav concluidas">
+        <i class="fas fa-check-circle"></i> Concluídas <br>({{ qtd_concluida }})
+      </a>
+      <a href="{{ url_for('painel', filtro='fora_prazo') }}" class="botao-nav fora-prazo">
+        <i class="fas fa-exclamation-triangle"></i> Fora do Prazo <br>({{ qtd_fora_prazo }})
+      </a>
+      <a href="{{ url_for('logout') }}" class="botao-nav sair">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section class="estatisticas">
+      <h2>Estatísticas</h2>
+      <ul>
+        <li>OS Novas: {{ qtd_nova }}</li>
+        <li>OS Pendentes: {{ qtd_pendente }}</li>
+        <li>OS Concluídas: {{ qtd_concluida }}</li>
+        <li>OS Fora do Prazo: {{ qtd_fora_prazo }}</li>
+        <li>Usuário que mais abriu OS: {{ usuario_top.nome if usuario_top else 'Nenhum' }}</li>
+      </ul>
+    </section>
+
+    <section class="graficos">
+      <div class="grafico-item">
+        <h2>Gráfico de OS por Status</h2>
+        <canvas id="graficoStatus" width="350" height="200"></canvas>
+      </div>
+      <div class="grafico-item">
+        <h2>Usuários que mais abriram OS </h2>
+        <canvas id="graficoUsuarios" width="350" height="200"></canvas>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Ordens de Serviço</h2>
+     <div class="tabela-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Token</th>
+            <th>Status</th>
+            <th>Solicitante</th>
+            <th>Setor</th>
+            <th>Tipo Serviço</th>
+            <th>Descrição</th>
+            <th>Data Criação</th>
+            <th>Resolução</th>
+            <th>Técnico</th>
+            <th>Anexos</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for os in ordens %}
+          <tr>
+            <td>{{ os.id }}</td>
+            <td>{{ os.token }}</td>
+            <td>{{ os.status }}</td>
+            <td>{{ os.solicitante_nome }}</td>
+            <td>{{ os.setor }}</td>
+            <td>{{ os.tipo_servico }}</td>
+            <td>{{ os.descricao }}</td>
+            <td>{{ os.data_criacao.strftime('%d/%m/%Y %H:%M') }}</td>
+            <td>{{ os.resolucao or '' }}</td>
+            <td>{{ os.tecnico or '' }}</td>
+            <td>
+              {% if os.anexos %}
+                <ul>
+                  {% for anexo in os.anexos %}
+                    <li><a href="{{ url_for('baixar_anexo', arquivo_id=anexo.id) }}">{{ anexo.nome_arquivo }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <em>Sem anexos</em>
+              {% endif %}
+            </td>
+            <td>
+              {% if os.status != 'Concluída' %}            
+             <button style=" background-color: #cc0000;
+                color: white;
+                border: none;
+                padding: 8px 14px;
+                border-radius: 4px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.3s ease;"  onclick="abrirModal({{ os.id }})">Fechar OS</button>
+             <div id="modal-{{ os.id }}" class="modal">
+             <div class="modal-conteudo">
+             <span class="fechar" onclick="fecharModal({{ os.id }})">&times;</span>
+             <h3>Resolução da OS #{{ os.id }}</h3>
+            <form method="POST" action="{{ url_for('fechar_os', id=os.id) }}">
+            <textarea name="resolucao" placeholder="Descreva a resolução do chamado..." required></textarea>
+            <button type="submit">Fechar OS</button>
+      </form>
+    </div>
+  </div>
+{% else %}
+  <strong>Finalizada</strong>
+{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Chart.js
+    const labelsStatus = ['Nova', 'Pendente', 'Concluída', 'Fora do Prazo'];
+    const dataStatus = [{{ qtd_nova }}, {{ qtd_pendente }}, {{ qtd_concluida }}, {{ qtd_fora_prazo }}];
+
+    const ctxStatus = document.getElementById('graficoStatus').getContext('2d');
+    new Chart(ctxStatus, {
+      type: 'pie',
+      data: {
+        labels: labelsStatus,
+        datasets: [{
+          label: 'Status das OS',
+          data: dataStatus,
+          backgroundColor: [
+            'rgba(2, 255, 2, 0.933)',
+            'rgb(252, 255, 86)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 0, 0, 0.95)'
+          ]
+        }]
+      }
+    });
+
+    const labelsUsuarios = [
+      {% for u in usuarios_top5 %}
+        "{{ u.nome }}",
+      {% endfor %}
+    ];
+    const dataUsuarios = [
+      {% for u in usuarios_top5 %}
+        {{ u.total }},
+      {% endfor %}
+    ];
+
+    const ctxUsuarios = document.getElementById('graficoUsuarios').getContext('2d');
+    new Chart(ctxUsuarios, {
+      type: 'bar',
+      data: {
+        labels: labelsUsuarios,
+        datasets: [{
+          label: 'OS abertas',
+          data: dataUsuarios,
+          backgroundColor: 'rgba(0, 102, 204, 0.7)'
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // Modal
+    function abrirModal(id) {
+      document.getElementById('modal-' + id).style.display = 'block';
+    }
+
+    function fecharModal(id) {
+      document.getElementById('modal-' + id).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    };
+
+    // Dark Mode - manter preferência
+    const body = document.body;
+    const toggleButton = document.getElementById('toggle-theme');
+
+    if (localStorage.getItem('dark-mode') === 'true') {
+      body.classList.add('dark-mode');
+      toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const darkAtivo = body.classList.contains('dark-mode');
+      localStorage.setItem('dark-mode', darkAtivo);
+      toggleButton.innerHTML = darkAtivo 
+        ? '<i class="fas fa-sun"></i>' 
+        : '<i class="fas fa-moon"></i>';
+    });
+
+    $(document).ready(function() {
+  $('table').DataTable({
+    "order": [[0, "asc"]], // Coluna 0 = ID, ordem crescente
+    "pageLength": 20, // mostra 20 por página
+    "language": {
+      "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
+    }
+  });
+});
+
+  </script>
+</body>
+</html>
