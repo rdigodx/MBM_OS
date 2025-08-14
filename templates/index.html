@@ -6,17 +6,16 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='Logo_2025_(branco)_bold-1.png') }}">
 </head>
 <body>
   <header>
         <nav>
           <div class="nav-left">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo MBM" class="logo">
+            <img src="{{ url_for('static', filename='Logo_2025.png') }}" alt="Logo MBM" class="logo">
         </div>
             <ul>
-    
-                <li><a href="/" style="text-decoration: none;">inicio </a></li>|
-                <li><a href="/login" style="text-decoration: none;">Login Técnico</a></li>
+                <li><a href="/login" style="text-decoration: none;" class="botao-log">Login Técnico</a></li>
             </ul>
         </nav>
         <div class="hero">
@@ -33,7 +32,7 @@
     <p><strong>Status:</strong> {{ ordem.status }}</p>
     <p><strong>Token:</strong> {{ ordem.token }}</p>
   {% else %}
-    <p>Bem-vindo! Nenhuma OS para exibir.</p>
+    <p>BEM-VINDO! NÃO HÁ NENHUMA OS PARA EXIBIR NO MOMENTO</p>
   {% endif %}
   
   <a href="{{ url_for('nova_os') }}" class="botao-nav nova">

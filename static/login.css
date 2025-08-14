@@ -54,9 +54,27 @@ form label {
   font-weight: bold;
 }
 
+.botao-log {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 10px 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-left: 10px;
+}
+
+.botao-log:hover {
+  background-color: #cc0000b0;
+  transform: scale(1.05);
+}
+
 form input[type="text"],
 form input[type="password"] {
-  width: 100%;
+  width: 91%;
   padding: 10px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
@@ -72,11 +90,12 @@ form input[type="submit"] {
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s, transform 0.2s;
 }
 
 form input[type="submit"]:hover {
-  background-color: #990000;
+  background-color: #cc0000;
+  transform: scale(1.05);
 }
 
 footer {

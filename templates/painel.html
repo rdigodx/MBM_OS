@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='Logo_2025_(branco)_bold-1.png') }}">
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
@@ -112,14 +113,14 @@
             </td>
             <td>
               {% if os.status != 'Concluída' %}            
-             <button style=" background-color: #cc0000;
+             <button style="background-color: #cc0000;
                 color: white;
                 border: none;
                 padding: 8px 14px;
                 border-radius: 4px;
                 font-weight: bold;
                 cursor: pointer;
-                transition: background-color 0.3s ease;"  onclick="abrirModal({{ os.id }})">Fechar OS</button>
+                transition: background-color 0.3s ease;" onclick="abrirModal({{ os.id }})">Fechar OS</button>
              <div id="modal-{{ os.id }}" class="modal">
              <div class="modal-conteudo">
              <span class="fechar" onclick="fecharModal({{ os.id }})">&times;</span>

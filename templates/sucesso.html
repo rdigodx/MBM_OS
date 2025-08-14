@@ -4,20 +4,21 @@
   <meta charset="UTF-8" />
   <title>Sucesso - OS Aberta</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='sucesso.css') }}" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='Logo_2025_(branco)_bold-1.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <header>
     <h1>Ordem de Serviço Aberta com Sucesso!</h1>
     <nav>
-      <a href="/">Home</a> |
-      <a href="/nova-os">Abrir Nova OS</a> |
-      <a href="/login">Login Técnico</a>
+      <a href="/" class="botao-log" style="text-decoration: none;">Home</a> |
+      <a href="/nova-os" class="botao-log" style="text-decoration: none;">Abrir Nova OS</a> |
+      <a href="/login" class="botao-log" style="text-decoration: none;">Login Técnico</a>
     </nav>
   </header>
   <div class="container">
     <p>Sua OS foi criada com o token: <strong>{{ token }}</strong></p>
-    <a href="{{ url_for('index') }}" class="voltar-inicio">Voltar para o início</a>
+    <a href="{{ url_for('index') }}" class="botao-log">Voltar para o início</a>
   </div>
   <footer>MBM Copy - Sistema de OS</footer>
 </body>
