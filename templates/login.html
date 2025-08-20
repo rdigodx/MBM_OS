@@ -31,10 +31,19 @@
 
       <label for="senha">Senha:</label>
       <input type="password" id="senha" name="senha" required />
+      <p id="capsAviso" style="color:red; font-size:0.7em; display:none; ">*Caps Lock está ativado!</p>
 
       <input type="submit" value="Entrar" />
     </form>
   </div>
   <footer>MBM Copy - Sistema de OS</footer>
+
+  <script>
+    document.getElementById('senha').addEventListener('keyup', function(event) {
+      const capsLockOn = event.getModifierState && event.getModifierState('CapsLock');
+      const aviso = document.getElementById('capsAviso');
+      aviso.style.display = capsLockOn ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>

@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='sucesso.css') }}" />
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='Logo_2025_(branco)_bold-1.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
   <header>
@@ -21,5 +22,21 @@
     <a href="{{ url_for('index') }}" class="botao-log">Voltar para o início</a>
   </div>
   <footer>MBM Copy - Sistema de OS</footer>
+
+ <script>
+  function showConfetti() {
+    confetti({
+      particleCount: 180,
+      spread: 80,
+      origin: { y: 0.6 },
+      scalar: 1.8
+    });
+  }
+
+  window.onload = function () {
+    setTimeout(showConfetti, 500); // delay de 0.6s pra criar surpresa
+  };
+</script>
+
 </body>
 </html>
