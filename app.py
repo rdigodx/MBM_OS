@@ -122,7 +122,7 @@ def nova_os():
 
         caminhos_anexos = []
 
-        # ✅ Upload de arquivo (INDENTADO CORRETO)
+        #  Upload de arquivo (INDENTADO CORRETO)
         if 'arquivo' in request.files:
             arquivo = request.files['arquivo']
             if arquivo and arquivo.filename != '':
@@ -220,7 +220,7 @@ def painel():
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
 
-    # ✅ Atualiza status para 'Pendente' após 24h
+    # Atualiza status para 'Pendente' após 24h
     limite_data_pendente = datetime.datetime.now() - datetime.timedelta(days=1)
     cursor.execute("""
         UPDATE ordens_servico

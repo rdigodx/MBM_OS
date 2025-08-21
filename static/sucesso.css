@@ -122,6 +122,6 @@ footer {
   }
 
   table {
-    min-width: 600px; /* força scroll horizontal */
+    min-width: 600px; 
   }
 }

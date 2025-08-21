@@ -115,7 +115,7 @@ header {
   justify-content: space-between;
   gap: 30px;
   margin-bottom: 40px;
-  flex-wrap: wrap; /* para responsividade */
+  flex-wrap: wrap; 
 }
 
 .grafico-item {
@@ -125,7 +125,7 @@ header {
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(0,0,0,0.1);
   text-align: center;
-  min-width: 250px; /* para evitar que fiquem muito pequenos */
+  min-width: 250px; 
 }
 
 
@@ -141,7 +141,7 @@ thead {
   color: white;
   position: sticky;
   top: 0;
-  z-index: 10; /* para garantir que fique acima */
+  z-index: 10;
 }
 
 th, td {
@@ -150,7 +150,7 @@ th, td {
   border: 1px solid #ddd;
   word-wrap: break-word;
 }
-/* Corpo da tabela */
+
 tbody tr {
   background-color: #fefefe;
   transition: background-color 0.3s ease;
@@ -165,21 +165,20 @@ tbody tr:hover {
   background-color: #dce9ff;
 }
 
-/* Cores diferentes para status */
 td.status-nova {
-  background-color: #c8f7c5; /* verde claro */
+  background-color: #c8f7c5; 
 }
 
 td.status-pendente {
-  background-color: #fff3b0; /* amarelo claro */
+  background-color: #fff3b0; 
 }
 
 td.status-concluida {
-  background-color: #a0c4ff; /* azul claro */
+  background-color: #a0c4ff; 
 }
 
 td.status-fora-prazo {
-  background-color: #ffadad; /* vermelho claro */
+  background-color: #ffadad;
 }
 
 form input[type="text"] {
@@ -188,7 +187,7 @@ form input[type="text"] {
   margin-bottom: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* importante para evitar estouro */
+  box-sizing: border-box; 
 }
 
 form button {
@@ -281,7 +280,7 @@ footer {
 
 /* ================= Dark Mode ================= */
 
-/* Botão Dark Mode */
+
 .toggle-theme {
   position: absolute;
   top: 10px;
@@ -294,7 +293,7 @@ footer {
   z-index: 100;
 }
 
-/* Quando o tema claro está ativo */
+
 body:not(.dark-mode) .toggle-theme {
   color: #000000;
 }
@@ -304,24 +303,24 @@ body.dark-mode::before {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.65);  /* overlay escuro */
-  z-index: -1; /* fica atrás de tudo */
+  background: rgba(0,0,0,0.65);  
+  z-index: -1; 
 }
 
-/* Header */
+
 body.dark-mode header {
   background-color: #1e1e1e;
   color: #f1f1f1;
 }
 
-/* Container principal */
+
 body.dark-mode .container {
   background: rgba(30,30,30,0.95);
   color: #f1f1f1;
   box-shadow: 0 0 10px rgba(255,255,255,0.05);
 }
 
-/* Estatísticas e títulos */
+
 body.dark-mode .estatisticas h2 {
   color: #f1f1f1;
 }
@@ -331,7 +330,7 @@ body.dark-mode .grafico-item {
   color: #f1f1f1;
 }
 
-/* Tabela */
+
 body.dark-mode thead {
   background-color: #333;
   color: #f1f1f1;
@@ -354,7 +353,6 @@ body.dark-mode td {
   border: 1px solid #444;
 }
 
-/* Modal */
 body.dark-mode .modal-conteudo {
   background: #1e1e1e;
   color: #f1f1f1;
@@ -366,7 +364,7 @@ body.dark-mode .modal-conteudo textarea {
   border: 1px solid #555;
 }
 
-/* Rodapé */
+
 body.dark-mode footer {
   background: #1e1e1e;
   color: #eaeaea;
@@ -431,11 +429,11 @@ body.dark-mode footer {
 
 .tabela-container {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Suaviza a rolagem em iPhones */
+    -webkit-overflow-scrolling: touch;
   }
 
   table {
-    width: 900px; /* Tamanho fixo para permitir rolagem */
+    width: 900px; 
   }
 
   th, td {

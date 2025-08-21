@@ -144,7 +144,7 @@
   </div>
 
   <script>
-    // Chart.js
+    
     const labelsStatus = ['Nova', 'Pendente', 'Concluída', 'Fora do Prazo'];
     const dataStatus = [{{ qtd_nova }}, {{ qtd_pendente }}, {{ qtd_concluida }}, {{ qtd_fora_prazo }}];
 
@@ -195,7 +195,7 @@
       }
     });
 
-    // Modal
+  
     function abrirModal(id) {
       document.getElementById('modal-' + id).style.display = 'block';
     }
@@ -210,7 +210,7 @@
       }
     };
 
-    // Dark Mode - manter preferência
+   
     const body = document.body;
     const toggleButton = document.getElementById('toggle-theme');
 
@@ -230,8 +230,8 @@
 
     $(document).ready(function() {
   $('table').DataTable({
-    "order": [[0, "asc"]], // Coluna 0 = ID, ordem crescente
-    "pageLength": 20, // mostra 20 por página
+    "order": [[0, "asc"]], 
+    "pageLength": 20, 
     "language": {
       "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json"
     }

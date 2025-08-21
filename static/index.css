@@ -24,11 +24,11 @@ body {
   background-color: rgba(255, 255, 255, 0.9); 
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  text-align: center; /* mantém leitura mais natural */
+  text-align: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* espaçamento entre itens */
+  gap: 15px; 
 }
 
 .container h2 {
@@ -52,7 +52,7 @@ body {
 
 .container .botao-nav {
   display: inline-block;
-  margin: 15px auto 0 auto; /* centraliza horizontalmente */
+  margin: 15px auto 0 auto;
 }
 
 
@@ -205,7 +205,7 @@ footer {
 }
 
 @media (max-width: 808px) {
-  /* NAV responsivo */
+ 
   nav {
     flex-direction: column;
     align-items: center;
@@ -245,23 +245,23 @@ footer {
     color: white;
   }
 
-  /* HERO responsivo */
+ 
   .hero h1 {
     font-size: 1.5rem;
     padding: 0 10px;
   }
 
-  /* CONTAINER responsivo */
+ 
   .container {
     padding: 50px 10px;
     margin: 5px auto;
     max-width: 100%;
     border-radius: 8px;
     box-shadow: none;
-    text-align: center; /* no celular, centraliza texto */
+    text-align: center; 
   }
 
-  /* TABELAS e texto menores */
+
   table, th, td {
     font-size: 14px;
     word-wrap: break-word;
